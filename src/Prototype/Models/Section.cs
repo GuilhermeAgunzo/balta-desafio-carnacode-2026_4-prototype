@@ -7,11 +7,10 @@ public class Section
     public bool IsEditable { get; set; }
     public List<string> Placeholders { get; set; } = [];
 
-    public Section DeepCopy() => new()
+    public Section DeepCopy()
     {
-        Name = Name,
-        Content = Content,
-        IsEditable = IsEditable,
-        Placeholders = new List<string>(Placeholders)
-    };
+        var clone = (Section)MemberwiseClone();
+        clone.Placeholders = new List<string>(Placeholders);
+        return clone;
+    }
 }

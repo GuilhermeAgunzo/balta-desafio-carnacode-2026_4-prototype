@@ -6,10 +6,10 @@ public class ApprovalWorkflow
     public int RequiredApprovals { get; set; }
     public int TimeoutDays { get; set; }
 
-    public ApprovalWorkflow DeepCopy() => new()
+    public ApprovalWorkflow DeepCopy()
     {
-        Approvers = new List<string>(Approvers),
-        RequiredApprovals = RequiredApprovals,
-        TimeoutDays = TimeoutDays
-    };
+        var clone = (ApprovalWorkflow)MemberwiseClone();
+        clone.Approvers = new List<string>(Approvers);
+        return clone;
+    }
 }

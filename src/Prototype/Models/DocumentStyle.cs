@@ -8,12 +8,10 @@ public class DocumentStyle
     public string LogoUrl { get; set; } = string.Empty;
     public Margins PageMargins { get; set; } = new();
 
-    public DocumentStyle DeepCopy() => new()
+    public DocumentStyle DeepCopy()
     {
-        FontFamily = FontFamily,
-        FontSize = FontSize,
-        HeaderColor = HeaderColor,
-        LogoUrl = LogoUrl,
-        PageMargins = PageMargins.DeepCopy()
-    };
+        var clone = (DocumentStyle)MemberwiseClone();
+        clone.PageMargins = PageMargins.DeepCopy();
+        return clone;
+    }
 }

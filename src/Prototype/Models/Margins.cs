@@ -7,11 +7,6 @@ public class Margins
     public int Left { get; set; }
     public int Right { get; set; }
 
-    public Margins DeepCopy() => new()
-    {
-        Top = Top,
-        Bottom = Bottom,
-        Left = Left,
-        Right = Right
-    };
+    /// <summary>All properties are value types — shallow copy is sufficient.</summary>
+    public Margins DeepCopy() => (Margins)MemberwiseClone();
 }
